@@ -1,0 +1,19 @@
+{
+    "name": "app-backend",
+    "version": "1.0.0",
+    "main": "server/index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node server/index.js",
+        "dev": "nodemon server/index.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.0",
+        "express": "^4.21.1",
+        "pg": "^8.10.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.22"
+    }
+}
