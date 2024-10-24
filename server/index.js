@@ -14,7 +14,7 @@ const connectToMongoDB = async () => {
     try {
         mongoClient = new MongoClient(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
         await mongoClient.connect();
-        mongoDb = mongoClient.db('nome_do_banco'); // Substitua pelo nome do seu banco de dados no MongoDB
+        mongoDb = mongoClient.db('Cluster0'); // Substitua pelo nome do seu banco de dados no MongoDB
         console.log('Conectado ao MongoDB');
     } catch (error) {
         console.error('Erro ao conectar ao MongoDB:', error);
