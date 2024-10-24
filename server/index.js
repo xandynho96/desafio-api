@@ -27,6 +27,18 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Rota para buscar todos os produtos (GET)
+app.get('/api/mongo-products', async (req, res) => {
+    try {
+        const productsCollection = mongoDb.collection('products'); // Nome da coleção no MongoDB
+        const products = await productsCollection.find({}).toArray();
+        res.json(products);
+    } catch (error) {
+        console.error('Erro ao buscar produtos no MongoDB:', error);
+        res.status(500).json({ error: 'Erro ao buscar produtos no MongoDB' });
+    }
+});
+
 // Rota para criar um novo produto (POST)
 app.post('/api/mongo-products', async (req, res) => {
     try {
