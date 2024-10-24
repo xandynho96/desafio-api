@@ -39,6 +39,24 @@ app.get('/api/mongo-products', async (req, res) => {
     }
 });
 
+// Rota para deletar um produto (DELETE)
+app.delete('/api/mongo-products/:id', async (req, res) => {
+    const productId = req.params.id; // Obter o ID do produto da URL
+    try {
+        const productsCollection = mongoDb.collection('products'); // Nome da coleção no MongoDB
+        const result = await productsCollection.deleteOne({ id: Number(productId) });
+
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ error: 'Produto não encontrado' });
+        }
+
+        res.status(200).json({ message: 'Produto deletado com sucesso' });
+    } catch (error) {
+        console.error('Erro ao deletar produto no MongoDB:', error);
+        res.status(500).json({ error: 'Erro ao deletar produto no MongoDB' });
+    }
+});
+
 // Rota para criar um novo produto (POST)
 app.post('/api/mongo-products', async (req, res) => {
     try {
