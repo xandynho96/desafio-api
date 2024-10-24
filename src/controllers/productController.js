@@ -1,6 +1,5 @@
 import * as productModel from '../models/productModel.js';
 
-// Controlador para buscar todos os produtos
 export const getProducts = async (req, res) => {
     try {
         const products = await productModel.getAllProducts();
@@ -11,9 +10,8 @@ export const getProducts = async (req, res) => {
     }
 };
 
-// Controlador para deletar um produto
 export const deleteProduct = async (req, res) => {
-    const productId = parseInt(req.params.id); // Obter o ID do produto da URL
+    const productId = parseInt(req.params.id); 
     try {
         const result = await productModel.deleteProductById(productId);
 
@@ -28,12 +26,10 @@ export const deleteProduct = async (req, res) => {
     }
 };
 
-// Controlador para criar um novo produto
 export const createProduct = async (req, res) => {
     try {
-        const newProduct = req.body; // Obter os dados do produto do corpo da requisição
+        const newProduct = req.body; 
 
-        // Validação simples para garantir que os campos obrigatórios existam
         if (
             !newProduct.id ||
             !newProduct.name ||
@@ -48,7 +44,7 @@ export const createProduct = async (req, res) => {
         }
 
         const result = await productModel.createProduct(newProduct);
-        res.status(201).json(result); // Retornar sucesso com o ID do novo produto
+        res.status(201).json(result); 
     } catch (error) {
         console.error('Erro ao criar produto no MongoDB:', error);
         res.status(500).json({ error: 'Erro ao criar produto no MongoDB' });

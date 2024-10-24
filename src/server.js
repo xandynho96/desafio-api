@@ -10,10 +10,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Conectar ao MongoDB
 connectToMongoDB();
 
-// Usar as rotas de produtos
 app.use('/api/mongo-products', productRoutes);
 
 const PORT = process.env.PORT || 3000;

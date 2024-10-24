@@ -1,6 +1,6 @@
 import { getDb } from '../config/database.js';
 
-const productsCollection = () => getDb().collection('products'); // Nome da coleção no MongoDB
+const productsCollection = () => getDb().collection('products'); 
 
 export const getAllProducts = async () => {
     return await productsCollection().find({}).toArray();
